@@ -41,7 +41,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ products }) => {
               </Card>
             </Link>
             <div className="absolute top-7 right-7 z-5">
-              <FavoriteToggleButton productId={productId} />
+              <FavoriteToggleButton />
             </div>
           </article>
         );

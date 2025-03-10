@@ -1,3 +1,4 @@
+// Alternative approach
 import React from "react";
 import { BreadCrumbs } from "@/components/single-product/BreadCrumbs";
 import { fetchSingleProduct } from "@/utils/action";
@@ -7,16 +8,19 @@ import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import { AddToCart } from "@/components/single-product/AddToCart";
 import { ProductRating } from "@/components/single-product/ProductRating";
 
-// Remove the 'await' from params.id since it's not a Promise
-const page = async ({ params }: { params: { id: string } }) => {
-  // Simply use params.id directly, no need to await it
-  const id_ = params.id;
-  const product = await fetchSingleProduct(id_);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
+  const product = await fetchSingleProduct(id);
   const { name, image, company, description, price } = product;
   const dollarsAmount = formatCurrency(price);
+
   return (
     <section>
-      <BreadCrumbs name={product.name} />
+      <BreadCrumbs name={name} />
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
         {/* IMAGE FIRST COL */}
         <div className="relative h-full">
@@ -46,6 +50,4 @@ const page = async ({ params }: { params: { id: string } }) => {
       </div>
     </section>
   );
-};
-
-export default page;
+}
