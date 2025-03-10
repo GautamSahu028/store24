@@ -7,8 +7,10 @@ import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import { AddToCart } from "@/components/single-product/AddToCart";
 import { ProductRating } from "@/components/single-product/ProductRating";
 
+// Remove the 'await' from params.id since it's not a Promise
 const page = async ({ params }: { params: { id: string } }) => {
-  const id_ = await params.id;
+  // Simply use params.id directly, no need to await it
+  const id_ = params.id;
   const product = await fetchSingleProduct(id_);
   const { name, image, company, description, price } = product;
   const dollarsAmount = formatCurrency(price);
