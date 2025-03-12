@@ -1769,7 +1769,7 @@ export const adminLinks: NavLink[] = [
   { href: "/admin/products/create", label: "create product" },
 ];
 ```
- 
+
 ### Admin Pages
 
 - remove existing page.tsx
