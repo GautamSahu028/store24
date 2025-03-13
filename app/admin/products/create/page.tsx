@@ -4,7 +4,7 @@ import ImageInput from "@/components/form/ImageInput";
 import PriceInput from "@/components/form/PriceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { faker } from "@faker-js/faker";
-import SubmitButton from "@/components/form/Buttons";
+import { SubmitButton } from "@/components/form/Buttons";
 import CheckBoxInput from "@/components/form/CheckBoxInput";
 import { createProductAction } from "@/utils/action";
 
