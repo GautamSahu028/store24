@@ -7,6 +7,9 @@ import { formatCurrency } from "@/utils/format";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import { AddToCart } from "@/components/single-product/AddToCart";
 import { ProductRating } from "@/components/single-product/ProductRating";
+import ShareButton from "@/components/single-product/ShareButton";
+import ProductReviews from "@/components/reviews/ProductReviews";
+import SubmitReview from "@/components/reviews/SubmitReview";
 
 export default async function Page({
   params,
@@ -37,9 +40,12 @@ export default async function Page({
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
-            <FavoriteToggleButton productId={id} />
+            <div className="flex items-center gap-x-2">
+              <FavoriteToggleButton productId={id} />
+              <ShareButton name={product.name} productId={id} />
+            </div>
           </div>
-          <ProductRating />
+          <ProductRating productId={id} />
           <h4 className="text-xl mt-2">{company}</h4>
           <p className="mt-3 text-md bg-muted inline-block p-2 rounded-md">
             {dollarsAmount}
@@ -48,6 +54,8 @@ export default async function Page({
           <AddToCart />
         </div>
       </div>
+      <ProductReviews productId={id} />
+      <SubmitReview productId={id} />
     </section>
   );
 }
