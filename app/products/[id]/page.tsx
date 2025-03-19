@@ -55,7 +55,7 @@ export default async function Page({
             {dollarsAmount}
           </p>
           <p className="mt-6 leading-8 text-muted-foreground">{description}</p>
-          <AddToCart />
+          <AddToCart productId={id} />
         </div>
       </div>
       <ProductReviews productId={id} />
